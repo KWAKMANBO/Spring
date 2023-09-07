@@ -12,12 +12,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MemberServiceTest {
 
-    MemberService memberService = new MemberService();
+    // MmeberService와 MemoryMemberRepository 두개를 사용할 필요 x
+    // 같은걸 쓰는게 좋음
+    // new로 서로다른 객체가 생성하게되면 다른 객체기 떄문에 내용물이 달라질 수 있음
+    MemberService memberService;
     MemoryMemberRepository memberRepository = new MemoryMemberRepository();
 
     @BeforeEach
     public void beforeEach(){
-        // 각 테스트를 실행하기전에
+        // 각 테스트를 실행하기전에 beforeEach 코드를 수행함
         memberRepository = new MemoryMemberRepository();
         memberService = new MemberService(memberRepository);
     }

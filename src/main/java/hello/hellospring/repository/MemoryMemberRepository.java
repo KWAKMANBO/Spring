@@ -1,10 +1,11 @@
 package hello.hellospring.repository;
 
 import hello.hellospring.domain.Member;
+import org.springframework.stereotype.Repository;
 
 import java.lang.reflect.AnnotatedArrayType;
 import java.util.*;
-
+@Repository
 public class MemoryMemberRepository implements MemberRepository{
 
     // 실무에서는 동시성 문제를 고려해야 하지만
