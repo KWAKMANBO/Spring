@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
+//@Repository
 public interface MemberRepository {
     Member save(Member member); // 회원정보 저장
     Optional<Member> findbyId(Long id); // Id을 통해서찾기

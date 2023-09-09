@@ -3,13 +3,16 @@ package hello.hellospring.service;
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-@Service
+
 // 실행되면 spring이 자동으로 Service에 등록을 해줌
 // 나중에 Autowired를 통해서 객체가 사용하기위해서 필요한 어노테이션임
+
+//@Service
 public class MemberService {
 
 
@@ -20,7 +23,10 @@ public class MemberService {
     // 아래 같은 방식을 사용해서 같은 객체를 사용하도록함
     // 이 방식을 Defendecies Ingections라고함
     private final MemberRepository memberRepository;
+
+    //@Autowired
     public MemberService(MemberRepository memberRepository) {
+
         this.memberRepository = memberRepository;
     }
 

@@ -3,6 +3,8 @@ package hello.hellospring.controller;
 import hello.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
 @Controller
 public class MemberController {
     // 아무것도 작성 x --> spring이 실행될때 @Controller 어노테이션이 있다면 spring이 자동으로 MemberController 객체를 생성해
@@ -28,6 +30,7 @@ public class MemberController {
     // new에서 하면 다른 컨트롤러에서 MemberService에서 사용하면 새로 생성하는것은 낭비
     // 하나 생성해서 그거를 받아다 쓰는게 더 효율적
 
+    @GetMapping
 
 
 

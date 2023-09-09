@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@Controller
+//@Controller
 public class HelloController{
 
     @GetMapping("hello") // web에서 /hello라고 요청이 들어오면 hello를 호출해줌
