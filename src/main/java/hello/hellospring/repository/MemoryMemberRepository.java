@@ -37,7 +37,7 @@ public class MemoryMemberRepository implements MemberRepository{
     public Optional<Member> findByName(String name) {
         return store.values().stream().filter(member ->member.getName().equals(name))
         .findAny();
-        // return stort.values().stream().filter(member ->{
+        // return store.values().stream().filter(member ->{
         // return member.getName().equals(name);
         // }).findAny()
         // 와 동일한 코드
