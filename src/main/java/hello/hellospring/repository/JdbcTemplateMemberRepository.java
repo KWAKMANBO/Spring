@@ -7,11 +7,8 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 
 import javax.sql.DataSource;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.*;
 
 @Repository
@@ -42,13 +39,15 @@ public class JdbcTemplateMemberRepository implements MemberRepository{
 
     @Override
     public Optional<Member> findbyId(Long id) {
-        List<Member> result = jdbcTemplate.query("select * from member where id = ?", memberRowMapper());
+        List<Member> result = jdbcTemplate.query("select * from member where id = ?", memberRowMapper(),id);
+        // qeury 마지막 파라미터로 feature명을 전달해주어야함
         return result.stream().findAny();
     }
 
     @Override
     public Optional<Member> findByName(String name) {
-        List<Member> result = jdbcTemplate.query("select * from member where name = ?", memberRowMapper());
+        List<Member> result = jdbcTemplate.query("select * from member where name = ?", memberRowMapper(), name);
+        // qeury 마지막 파라미터로 feature명을 전달해주어야함
         return result.stream().findAny();
     }
 
@@ -69,4 +68,3 @@ public class JdbcTemplateMemberRepository implements MemberRepository{
 
     }
 }
-0
