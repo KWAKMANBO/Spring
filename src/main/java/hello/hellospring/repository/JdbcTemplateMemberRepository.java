@@ -11,7 +11,9 @@ import org.springframework.stereotype.Repository;
 import javax.sql.DataSource;
 import java.util.*;
 
-@Repository
+//@Repository
+// spring data JPA를 사용하기 위해서 어노테이션을 주석 처리
+// why? bean 같은 타입 여러개가 등록되기 때문에
 public class JdbcTemplateMemberRepository implements MemberRepository{
 
     // jdbc를 사용하는 방법
@@ -38,7 +40,7 @@ public class JdbcTemplateMemberRepository implements MemberRepository{
     }
 
     @Override
-    public Optional<Member> findbyId(Long id) {
+    public Optional<Member> findById(Long id) {
         List<Member> result = jdbcTemplate.query("select * from member where id = ?", memberRowMapper(),id);
         // qeury 마지막 파라미터로 feature명을 전달해주어야함
         return result.stream().findAny();

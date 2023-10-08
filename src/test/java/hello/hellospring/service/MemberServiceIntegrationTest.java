@@ -7,6 +7,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +24,7 @@ class MemberServiceIntegrationTest {
     // 같은걸 쓰는게 좋음
     // new로 서로다른 객체가 생성하게되면 다른 객체기 떄문에 내용물이 달라질 수 있음
     @Autowired MemberService memberService;
-    @Autowired MemberRepository memberRepository = new MemoryMemberRepository();
+    @Autowired MemberRepository memberRepository;
     // TestCase에서는 Test할때만 사용하므로
 
 
@@ -34,7 +35,7 @@ class MemberServiceIntegrationTest {
 
         // given - 무언가가 주어짐
         Member member = new Member();
-        member.setName("spring");
+        member.setName("spring101");
 
         // when - 테스트를 실행 했을때
         Long saveId = memberService.join(member);

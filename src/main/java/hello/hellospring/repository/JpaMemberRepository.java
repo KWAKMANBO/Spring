@@ -7,7 +7,9 @@ import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
+//@Repository
+// spring data JPA를 사용하기 위해서 어노테이션을 주석 처리
+// why? bean 같은 타입 여러개가 등록되기 때문에
 public class JpaMemberRepository implements MemberRepository{
 
     public JpaMemberRepository(EntityManager em) {
@@ -28,7 +30,7 @@ public class JpaMemberRepository implements MemberRepository{
     }
 
     @Override
-    public Optional<Member> findbyId(Long id) {
+    public Optional<Member> findById(Long id) {
         Member member = em.find(Member.class, id);
         // table에서 pk는 위와 같이 쉽게 조회할 수 있음
                 return Optional.ofNullable(member);

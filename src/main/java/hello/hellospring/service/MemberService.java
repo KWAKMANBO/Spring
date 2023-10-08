@@ -42,6 +42,10 @@ public class MemberService {
         
         // 같은 이름이 있는 중복회원은 회원가입안됨
 
+        long start = System.currentTimeMillis();
+        // 밀레세컨드 단위로 시간을 확인할 수 있음
+
+        try{
         /*Optional<Member> result = memberRepository.findByName(member.getName());
         result.ifPresent(m ->{ // null이 아닌 다른값이면 즉 값이 존재한다면 
             throw new IllegalStateException("이미 존재하는 회원입니다.");
@@ -52,6 +56,12 @@ public class MemberService {
 
         memberRepository.save(member);
         return member.getId();
+        }finally{
+            long finish = System.currentTimeMillis();
+            long timeMs = finish - start;
+            System.out.println("join = " + timeMs + "ms");
+
+        }
     }
 
 
@@ -59,12 +69,19 @@ public class MemberService {
      * 전체 회원 조회
      */
     public List<Member> findMembers(){
-      return  memberRepository.findAll();
-      // findAll의 반환타입은 리스트
+        long start = System.currentTimeMillis();
+        try{
+            return  memberRepository.findAll();
+            // findAll의 반환타입은 리스트
+        }finally {
+            long finish = System.currentTimeMillis();
+            long timeMs = finish - start;
+            System.out.println("findMembrers " + timeMs + "ms");
+        }
     }
 
     public Optional<Member> findOne(Long memberId){
-        return memberRepository.findbyId(memberId);
+        return memberRepository.findById(memberId);
     }
 
     private void validateDuplicateMember(Member member) {

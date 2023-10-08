@@ -29,7 +29,7 @@ public class MemoryMemberRepositoryTest {
 
         repository.save(member);
 
-        Member result = repository.findbyId(member.getId()).get();
+        Member result = repository.findById(member.getId()).get();
 
         //System.out.println("result = " + (result == member));
         // 모든 결과를 글자로 다볼 수는 없음
